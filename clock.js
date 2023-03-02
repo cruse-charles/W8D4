@@ -14,13 +14,40 @@ class Clock {
 
   printTime() {
     // Format the time in HH:MM:SS
+    let time = `${this.hours}:${this.minutes}:${this.seconds}`
     // Use console.log to print it.
+    console.log(time)
   }
 
   _tick() {
     // 1. Increment the time by one second.
+    this.increaseSeconds();
     // 2. Call printTime.
+    this.printTime();
+  }
+
+  increaseSeconds() {
+    this.seconds += 1;
+    if (this.seconds === 60) {
+      this.seconds = 0;
+      this.increaseMinutes();
+    } 
+  }
+  increaseMinutes() {
+    this.minutes += 1;
+    if (this.minutes === 60) {
+      this.minutes = 0;
+      this.increaseHours();
+    } 
+  }
+  increaseHours() {
+    this.hours += 1;
+    if (this.hours === 24) {
+      this.hours = 0;
+    } 
   }
 }
+
+
 
 const clock = new Clock();
